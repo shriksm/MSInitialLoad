@@ -16,6 +16,7 @@ export default class SplashScreen extends Component {
     this.state = {
       redirect: false
     };
+
   }
 
 
@@ -33,24 +34,32 @@ export default class SplashScreen extends Component {
   // header: null will hide the title bar from the screen
   static navigationOptions = { title: 'Splash', header: null };
 
-  displayImage() {
+  componentDidMount() {
+    console.log('Splashscreen: componentDidMount');
     setTimeout(
-      () => {
-        this.setState({ redirect: true });
-      },
-      2000
-    );
+          () => {
+            this.setState((previousState) => {
+                          return { redirect: !previousState.redirect };
+                      });
+          },
+          2000
+        );
+  }
 
-    return <Image source={require('../assets/images/logo.png')} style={{ width: 112, height: 70 }} resizeMode='contain' />
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Splashscreen: componentDidUpdate');
+    //console.log('Splashscreen: prev redirect: ' + prevState.redirect);
+    //console.log('Splashscreen: prev redirect: ' + this.state.redirect);
+    if (this.state.redirect) {
+        this.onEnd();
+    }
   }
 
   render() {
-    let redirect = this.state.redirect;
+
     return (
       <View style={styles.container}>
-        {
-          redirect ? this.onEnd() : this.displayImage()
-        }
+        <Image source={require('../assets/images/logo.png')} style={{ width: 112, height: 70 }} resizeMode='contain' />
       </View>
     );
   }

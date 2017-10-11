@@ -52,7 +52,6 @@ export default class SettingsScreen extends Component {
                 {
                     id_token: params.id_token,
                     access_token: params.access_token,
-                    cookie: params.cookie,
                     accountId: params.accountId
                 });
         } 

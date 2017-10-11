@@ -42,7 +42,6 @@ export default class LoginScreen extends Component {
                             params: {
                                 id_token: finalResponse.id_token,
                                 access_token: finalResponse.access_token,
-                                cookie: finalResponse.cookie,
                                 accountId: finalResponse.accountId
                             }
                         })
@@ -82,7 +81,7 @@ export default class LoginScreen extends Component {
                 })
             })
                 .then(response => {
-                    //console.log(response);
+                    console.log(response);
                     return response.text();
                 })
                 .then(response => {
@@ -113,7 +112,6 @@ export default class LoginScreen extends Component {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + accessToken,
-                    'Cookie': '.AUTHTOKEN=; .HarmonyAuth='
                 },
                 body: JSON.stringify({
                     "reqId": "1",
@@ -167,7 +165,6 @@ export default class LoginScreen extends Component {
                         let provInfoResp = {
                             id_token: tokensWithCookie.id_token,
                             access_token: tokensWithCookie.access_token,
-                            cookie: tokensWithCookie.cookie,
                             accountId: provInfo.data.accountId
                         };
                         //console.log('provInfoResp: ' + JSON.stringify(provInfoResp));

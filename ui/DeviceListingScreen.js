@@ -33,10 +33,10 @@ export default class DeviceListingScreen extends Component {
         hdrs.set('Content-Type', 'application/json');
         hdrs.set('Accept', 'application/json');
         hdrs.set('Authorization', 'Bearer ' + params.access_token);
-        hdrs.set('Cookeie', 'Bearer ' + params.cookie);
 
         fetch('https://svcs.myharmony.com/UserAccountDirectorPlatform/UserAccountDirector.svc/json2/Account/' + params.accountId + '/SimpleRestGetDeviceList', {
             method: 'GET',
+            credentials: 'same-origin', // Will include the cookies in the header. Reqd for iOS
             headers: hdrs
         })
             .then(response => {
