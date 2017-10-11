@@ -27,7 +27,7 @@ export default class LoginScreen extends Component {
     }
 
     onLoginPressed() {
-        Alert.alert('User name: ' + this.state.userName + '; Password: ' + this.state.password);
+//        Alert.alert('User name: ' + this.state.userName + '; Password: ' + this.state.password);
         this.signin()
             .then(tokens => { return this.getCookies(tokens) })
             .then(tokensWithCookie => { return this.getProvisionInfo(tokensWithCookie) })
@@ -111,7 +111,7 @@ export default class LoginScreen extends Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + accessToken,
+                    'Authorization': 'Bearer ' + accessToken
                 },
                 body: JSON.stringify({
                     "reqId": "1",
