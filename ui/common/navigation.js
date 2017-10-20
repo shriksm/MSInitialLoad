@@ -5,11 +5,12 @@ import SettingsScreen from '../SettingsScreen';
 import DeviceListingScreen from '../DeviceListingScreen';
 
 
-export const BrownieAppNavigator = StackNavigator({
-    Splash: { 
-        screen: SplashScreen,
-        //navigationOptions is set in the SplashScreen component
-    },
+const MainCardNavigator = StackNavigator(
+  {
+    Splash: {
+            screen: SplashScreen,
+            //navigationOptions is set in the SplashScreen component
+        },
     Login: {
         screen: LoginScreen,
         navigationOptions: {
@@ -37,7 +38,11 @@ export const BrownieAppNavigator = StackNavigator({
                 alignSelf: 'center'
             }
         }
-    },
+    }
+});
+
+export const BrownieAppNavigator = StackNavigator({
+    MainCardNavigator: {screen: MainCardNavigator},
     Devices: {
         screen: DeviceListingScreen,
         navigationOptions: {
@@ -53,4 +58,8 @@ export const BrownieAppNavigator = StackNavigator({
         }
     }
     
+},
+{
+    headerMode: 'none',
+    mode: 'modal'
 });
