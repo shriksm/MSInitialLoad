@@ -48,8 +48,8 @@ export default class SplashScreen extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     console.log('Splashscreen: componentDidUpdate');
-    //console.log('Splashscreen: prev redirect: ' + prevState.redirect);
-    //console.log('Splashscreen: prev redirect: ' + this.state.redirect);
+    // Have to call onEnd() from within componentDidUpdate otherwise a warning will be displayed saying
+    // something like the state modification shouldn't happen during render
     if (this.state.redirect) {
         this.onEnd();
     }
