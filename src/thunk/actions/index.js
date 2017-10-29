@@ -5,3 +5,5 @@ export const ActionCreators = Object.assign({},
   navigationActions,
   dataActions
 );
+
+console.log('ActionCreators: ' + JSON.stringify(ActionCreators));
