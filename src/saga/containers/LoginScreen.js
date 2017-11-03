@@ -48,6 +48,7 @@ class LoginScreen extends Component {
                 <TextInput
                     style={{ color: 'white', fontWeight: 'bold' }}
                     underlineColorAndroid='#00000000'
+                    autoCapitalize='none'
                     keyboardType='email-address'
                     value={this.state.userName}
                     onChangeText={userName => this.setState({ userName })} />

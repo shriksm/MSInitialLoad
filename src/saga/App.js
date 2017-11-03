@@ -12,7 +12,6 @@ import rootSaga from './sagas'
 
 const sagaMiddleware = createSagaMiddleware();
 function configureStore(initialState) {
-
   const enhancer = compose(
     applyMiddleware(
       sagaMiddleware
