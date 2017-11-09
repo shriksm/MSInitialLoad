@@ -1,8 +1,19 @@
 export const handleErrors = (response) => {
+    console.log('response: ' + response);
     if (!response.ok) {
         throw Error(response.statusText);
     }
     return response;
+}
+
+export const getCalculatedWidth = (screenWidth, givenWidth) => {
+    const visualDesignWidth = 375;
+    return (screenWidth * givenWidth) / visualDesignWidth;
+}
+
+export const getCalculatedHeight = (screenHeight, givenHeight) => {
+    const visualDesignHeight = 667;
+    return (screenHeight * givenHeight) / visualDesignHeight;
 }
 
 export const fetchDevices = (accountId, accessToken) => {
@@ -74,10 +85,11 @@ export const signIn = (email, password) => {
             throw exception;
         }
     })
-    .catch (err =>{throw err})
+    .catch (err =>{console.log(err); throw err})
 }
 
 export const getCookies = (tokens) => {
+    console.log(`tokens: ${JSON.stringify(tokens)}`);
     if (!(tokens || tokens.id_token || tokens.access_token)) {
         throw Error('One or more tokens are null: tokens: ' + tokens);
     }
@@ -109,7 +121,7 @@ export const getCookies = (tokens) => {
 
 export const getProvisionInfo = (hubIp) => {
     //console.log('Inside getProvisionInfo tokensWithCookie: ' + tokensWithCookie);
-    return fetch('http://' + hubIp + ':8088/', {
+    return fetch(`http://${hubIp}:8088/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

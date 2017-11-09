@@ -42,7 +42,7 @@ export const navReducer = (state = initialNavState, action) => {
   }
 
 
-  console.log('nextState: ' + JSON.stringify(nextState));
+  //console.log('nextState: ' + JSON.stringify(nextState));
 
   // Simply return the original `state` if `nextState` is null or undefined.
   return nextState || state;

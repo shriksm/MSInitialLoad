@@ -23,15 +23,18 @@ export default class SettingsScreen extends Component {
                 },
                 {
                     id: 1,
-                    name: 'ACTIVITIES',
+                    screen: 'Octopus',
+                    name: 'OCTOPUS',
                 },
                 {
                     id: 2,
-                    name: 'FAVORITES',
+                    screen: 'Playground',
+                    name: 'DRAG-DROP',
                 },
                 {
                     id: 3,
-                    name: 'HUB',
+                    screen: 'Viewport',
+                    name: 'VIEWPORT',
                 },
                 {
                     id: 4,
@@ -46,7 +49,6 @@ export default class SettingsScreen extends Component {
    }
 
     openSettingsItem(item) {
-        let {params} = this.props.navigation.state;
         if (item.screen) {
             return this.props.navigation.navigate(item.screen);
         } 
@@ -55,6 +57,7 @@ export default class SettingsScreen extends Component {
     }
 
     render() {
+        console.log('navigation: ' + this.props.navigation);
         return (
             <View style={styles.container}>
                 {

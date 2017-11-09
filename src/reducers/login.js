@@ -2,8 +2,8 @@ import * as types from "../actions/types"
 
 export const loginReducer = (state = {}, action) => {
   let nextState;
-  console.log('login reducer: action ' + JSON.stringify(action));
-  console.log('login reducer: state ' + JSON.stringify(state));
+//  console.log('login reducer: action ' + JSON.stringify(action));
+//  console.log('login reducer: state ' + JSON.stringify(state));
   switch (action.type) {
 
     case types.LIP_SIGNIN_SUCCESS:
@@ -45,7 +45,7 @@ export const loginReducer = (state = {}, action) => {
 
   }
 
-  console.log('login reducer: nextState ' + JSON.stringify(nextState));
+//  console.log('login reducer: nextState ' + JSON.stringify(nextState));
 
   // Simply return the original `state` if `nextState` is null or undefined.
   return nextState || state;

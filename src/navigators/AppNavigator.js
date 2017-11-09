@@ -6,6 +6,9 @@ import SplashScreen from '../containers/SplashScreen';
 import LoginScreen from '../containers/LoginScreen';
 import SettingsScreen from '../containers/SettingsScreen';
 import DeviceListingScreen from '../containers/DeviceListingScreen';
+import OctopusScreen from '../containers/OctopusScreen';
+import Playground from '../containers/Playground';
+import Viewport from '../containers/Viewport';
 
 const CardNavigator = StackNavigator(
 {
@@ -60,11 +63,52 @@ export const AppNavigator = StackNavigator({
                 alignSelf: 'center'
             }
         }
+    },
+    Octopus: {
+        screen: OctopusScreen,
+        navigationOptions: {
+            title: 'Octopus',
+            headerTintColor: 'white', //Text color
+            headerStyle: {
+                backgroundColor: 'black', //Title bar color
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                alignSelf: 'center'
+            }
+        }
+    },
+    Playground: {
+        screen: Playground,
+        navigationOptions: {
+            title: 'Playground',
+            headerTintColor: 'white', //Text color
+            headerStyle: {
+                backgroundColor: 'black', //Title bar color
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                alignSelf: 'center'
+            }
+        }
+    },
+    Viewport: {
+        screen: Viewport,
+        navigationOptions: {
+            title: 'Viewport',
+            headerTintColor: 'white', //Text color
+            headerStyle: {
+                backgroundColor: 'black', //Title bar color
+            },
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                alignSelf: 'center'
+            }
+        }
     }
 },
 {
     mode: 'modal',
-    headerMode: 'none'
 });
 
 class App extends React.Component {

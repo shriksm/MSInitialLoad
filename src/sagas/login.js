@@ -1,4 +1,4 @@
-import * as utils from '../../lib/utils'
+import * as utils from '../lib/utils'
 import * as types from '../actions/types'
 
 import { put, take, call, select, all } from 'redux-saga/effects'
@@ -17,6 +17,7 @@ const signInAndGetCookies = function* (email, password) {
         yield call(utils.getCookies, tokens);
         yield put({type: types.BACKEND_SIGNIN_SUCCESS});
     } catch (error) {
+        console.log('error: ' + error);
         yield put({ type: types.BACKEND_SIGNIN_FAILED, error: {call: 'https://svcs.myharmony.com/CompositeSecurityServices/Security.svc/json2/signin', error}});
         throw error;
     }
@@ -55,8 +56,8 @@ export const getDevices = function* () {
         yield take(types.GET_DEVICES_ACTION);
         let accountId = yield select(getAccountId);
         let tokens = yield select(getTokens);
-        //console.log('accountId: ' + accountId);
-        //console.log('tokens: ' + tokens);
+        console.log('accountId: ' + accountId);
+        console.log('tokens: ' + tokens);
         yield call(fetchDevices, accountId, tokens.access_token);
     }
 }

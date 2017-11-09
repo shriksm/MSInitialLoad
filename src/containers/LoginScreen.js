@@ -40,7 +40,7 @@ class LoginScreen extends Component {
 
     render() {
         let hidePwd = this.state.hidePassword;
-        console.log('props: ' + JSON.stringify(this.props));
+        //console.log('props: ' + JSON.stringify(this.props));
 
         return (
             <View style={styles.container}>
@@ -65,10 +65,10 @@ class LoginScreen extends Component {
                     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                         <TouchableWithoutFeedback onPress={this.togglePassword.bind(this)}>
                             {
-                                hidePwd ? <Image source={require('../../../assets/images/lip_show_password_on.png')}
+                                hidePwd ? <Image source={require('../../assets/images/lip_show_password_on.png')}
                                     style={{ width: 22, height: 11 }}
                                     resizeMode='contain' /> :
-                                    <Image source={require('../../../assets/images/lip_show_password_off.png')}
+                                    <Image source={require('../../assets/images/lip_show_password_off.png')}
                                         style={{ width: 22, height: 11 }}
                                         resizeMode='contain' />
                             }
