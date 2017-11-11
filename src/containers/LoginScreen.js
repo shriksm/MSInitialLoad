@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
     },
     loginText: {
         color: 'white',
-        fontSize: 12
+        fontSize: 12,
     },
     lineAbove: {
         borderTopColor: 'white',

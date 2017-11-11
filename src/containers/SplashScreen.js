@@ -12,7 +12,6 @@ import {
     Dimensions
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
-import { Font } from 'expo'
 import * as types from '../actions/types';
 import { ActionCreators } from '../actions'
 
@@ -24,17 +23,7 @@ class SplashScreen extends Component {
     // header: null will hide the title bar from the screen
     static navigationOptions = { title: 'Splash', header: null };
 
-    async componentDidMount() {
-
-        await Font.loadAsync( {
-            'brownprott': require( '../../assets/fonts/brownprott_regular.ttf' ),
-            'SFUIText-Light': require( '../../assets/fonts/SFText-Light.otf' ),
-            'SFUIText-Regular': require( '../../assets/fonts/SFText-Regular.otf' ),
-            'SFUIText-Medium': require( '../../assets/fonts/SFText-Medium.otf' ),
-            'SFUIText-Semibold': require( '../../assets/fonts/SFText-Semibold.otf' ),
-            'SFUIText-Heavy': require( '../../assets/fonts/SFText-Heavy.otf' ),
-        } );
-
+    componentDidMount() {
         setTimeout(
             () => {
                 this.props.navigateTo( types.GO_TO_LOGIN, { from: 'SplashScreen' } );

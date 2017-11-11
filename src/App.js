@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { AppRegistry } from 'react-native'
 import { AppWithNavigationState } from './navigators/AppNavigator'
 import { Provider } from 'react-redux'
@@ -25,11 +25,16 @@ const store = configureStore( {} );
 
 sagaMiddleware.run( rootSaga );
 
-export const App = () => (
-    <Provider store={store}>
-        <AppWithNavigationState />
-    </Provider>
-)
+export class App extends Component {
+    render() {
+        return (
+            <Provider store={store}>
+                <AppWithNavigationState />
+            </Provider>
+        );
+    }
+}
+
 
 
 
