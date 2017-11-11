@@ -18,8 +18,8 @@ import {
 } from 'react-native';
 
 class LoginScreen extends Component {
-    constructor(props) {
-        super(props);
+    constructor( props ) {
+        super( props );
         this.state = {
             hidePassword: true,
             userName: '',
@@ -29,18 +29,18 @@ class LoginScreen extends Component {
     }
 
     onLoginPressed() {
-        this.props.login(this.state.userName, this.state.password, this.state.hubIp);
+        this.props.login( this.state.userName, this.state.password, this.state.hubIp );
     }
 
     togglePassword() {
-        this.setState((previousState) => {
+        this.setState(( previousState ) => {
             return { hidePassword: !previousState.hidePassword };
-        });
+        } );
     }
 
     render() {
         let hidePwd = this.state.hidePassword;
-        console.log('props: ' + JSON.stringify(this.props));
+        console.log( 'props: ' + JSON.stringify( this.props ) );
 
         return (
             <View style={styles.container}>
@@ -48,9 +48,10 @@ class LoginScreen extends Component {
                 <TextInput
                     style={{ color: 'white', fontWeight: 'bold' }}
                     underlineColorAndroid='#00000000'
+                    autoCapitalize='none'
                     keyboardType='email-address'
                     value={this.state.userName}
-                    onChangeText={userName => this.setState({ userName })} />
+                    onChangeText={userName => this.setState( { userName } )} />
                 <View style={[styles.lineAbove, { flexDirection: 'row' }]}>
                     <View style={{ flex: 6, flexDirection: 'column' }}>
                         <Text style={styles.loginText}>PASSWORD</Text>
@@ -59,15 +60,15 @@ class LoginScreen extends Component {
                             style={{ color: 'white', fontWeight: 'bold' }}
                             underlineColorAndroid='#00000000'
                             value={this.state.password}
-                            onChangeText={password => this.setState({ password })} />
+                            onChangeText={password => this.setState( { password } )} />
                     </View>
                     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                        <TouchableWithoutFeedback onPress={this.togglePassword.bind(this)}>
+                        <TouchableWithoutFeedback onPress={this.togglePassword.bind( this )}>
                             {
-                                hidePwd ? <Image source={require('../../../assets/images/lip_show_password_on.png')}
+                                hidePwd ? <Image source={require( '../../../assets/images/lip_show_password_on.png' )}
                                     style={{ width: 22, height: 11 }}
                                     resizeMode='contain' /> :
-                                    <Image source={require('../../../assets/images/lip_show_password_off.png')}
+                                    <Image source={require( '../../../assets/images/lip_show_password_off.png' )}
                                         style={{ width: 22, height: 11 }}
                                         resizeMode='contain' />
                             }
@@ -82,12 +83,12 @@ class LoginScreen extends Component {
                         underlineColorAndroid='#00000000'
                         keyboardType='numeric'
                         value={this.state.hubIp}
-                        onChangeText={hubIp => this.setState({ hubIp })} />
+                        onChangeText={hubIp => this.setState( { hubIp } )} />
                 </View>
                 <View style={[styles.lineAbove, { flex: 1 }]} />
                 <TouchableHighlight
                     style={{ height: 56, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center' }}
-                    onPress={this.onLoginPressed.bind(this)}
+                    onPress={this.onLoginPressed.bind( this )}
                     underlayColor='gray'>
                     <View>
                         <Text style={{ fontWeight: 'bold', fontSize: 18, color: 'black' }}>LOGIN</Text>
@@ -98,7 +99,7 @@ class LoginScreen extends Component {
     }
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create( {
     container: {
         flex: 1,
         flexDirection: 'column',
@@ -113,20 +114,20 @@ const styles = StyleSheet.create({
         borderTopWidth: 1
     }
 
-});
+} );
 
-const mapStateToProps = (state) => {
-  return {
-    error: state.error
-  }
+const mapStateToProps = ( state ) => {
+    return {
+        error: state.error
+    }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        login: (email, password, hubIp) => {
-            dispatch(ActionCreators.login(email, password, hubIp))
+        login: ( email, password, hubIp ) => {
+            dispatch( ActionCreators.login( email, password, hubIp ) )
         }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default connect( mapStateToProps, mapDispatchToProps )( LoginScreen );
