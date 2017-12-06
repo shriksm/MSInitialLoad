@@ -2,7 +2,7 @@ import * as types from "../actions/types"
 
 export const loginReducer = (state = {}, action) => {
   let nextState;
-//  console.log('login reducer: action ' + JSON.stringify(action));
+//   console.log('login reducer: action ' + JSON.stringify(action));
 //  console.log('login reducer: state ' + JSON.stringify(state));
   switch (action.type) {
 
@@ -25,16 +25,20 @@ export const loginReducer = (state = {}, action) => {
                        signin: action.message
                      });
         break;
-    case types.GET_PROVISION_INFO_SUCCESS:
+    case types.GET_IDS_SUCCESS:
         nextState = Object.assign({}, state, {
-                       accountId: action.message.accountId
+                       ids: action.data
                      });
         break;
-    case types.GET_PROVISION_INFO_FAILED:
-        Object.assign({}, state, {
-                       accountId: 'Failed'
-                     });
-        break;
+    case types.TABASCO_TOKENS_SUCCESS:
+        let tokens = state.tokens;
+        tokens.rt = action.data.refresh_token;
+        tokens.tabascoAt = action.data.access_token;
+        nextState = Object.assign({}, state, {
+                        tokens: tokens
+                    });
+        console.log('login reducer: nextState ' + JSON.stringify(nextState));
+        break;          
     case types.DEVICE_RETRIEVAL_SUCCESS:
         nextState = Object.assign({}, state, {
                        devices: action.data

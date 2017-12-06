@@ -24,8 +24,10 @@ class SplashScreen extends Component {
     static navigationOptions = { title: 'Splash', header: null };
 
     componentDidMount() {
+        console.log('Inside componentDidMount');
         setTimeout(
             () => {
+                console.log('Inside setTimeout');
                 this.props.navigateTo( types.GO_TO_LOGIN, { from: 'SplashScreen' } );
             }, 2000 );
     }
